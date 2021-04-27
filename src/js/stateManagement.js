@@ -2,7 +2,7 @@ export default class StateManagement {
     constructor(worklog, instanceController, url) {
         this.worklog = worklog;
         this.instanceController = instanceController;
-        this.url = 'ws://localhost:8080/ws';
+        this.url = 'wss://ahj-cloud.herokuapp.com/wss';
     }
 
     init() {
@@ -107,50 +107,3 @@ export default class StateManagement {
 
 
 
-
-
-// export default class StateManagement {
-//     constructor(worklog, instanceController, url) {
-//         this.worklog = worklog;
-//         this.instanceController = instanceController;
-//         this.url = url;
-//     }
-
-//     init() {
-//         this.newInstanceListener();
-//         // this.startCloudServer();
-//     }
-
-//     closeStream(stream) {
-//         stream.close();
-//     }
-    
-//     callbackToggle() {
-//         //проверить this.url
-//         const eventSource = new EventSource(`http://localhost:8080/start`);
-        
-//         eventSource.addEventListener('started', (evt) => {
-//             console.log(evt.data);
-//         });
-//     }
-    
-//     newInstanceListener() {
-//         this.instanceController.instanceButtonCreate.addEventListener('click', () => { 
-//             const eventSource = new EventSource(`${this.url}instances`);
-//             eventSource.addEventListener('received', (evt) => {
-//                 const data = JSON.parse(evt.data);
-//                 this.worklog.createWorklogMessage(data.date, data.id, data.info);
-//             });
-
-//             eventSource.addEventListener('created', (evt) => {
-//                 const data = JSON.parse(evt.data);
-//                 this.worklog.createWorklogMessage(data.date, data.id, data.info);
-//                 const callbackDel = () => console.log('del');
-              
-//                 this.instanceController.createInstance(data.id, callbackDel, this.callbackToggle);
-                
-//                 this.closeStream(eventSource)
-//             });  
-//         });
-//     }
-// }

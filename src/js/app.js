@@ -5,6 +5,6 @@ import InstanceController from './instanceController.js';
 
 const worklog = new Worklog()
 const instanceController = new InstanceController();
-const stateManagement = new StateManagement(worklog, instanceController, 'http://localhost:8080/');
+const stateManagement = new StateManagement(worklog, instanceController);
 
 stateManagement.init();
